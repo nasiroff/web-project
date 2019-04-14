@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao  {
 
-    private final String INSERT_NEW_USER_DATA="insert into user( username, email, token, password, id_role, status ) values (?, ?, ?, ?, ?, ?)";
+    private final String INSERT_NEW_USER_DATA="insert into user( username, email, token, password, id_role, status, image ) values (?, ?, ?, ?, ?, ?, ?)";
     private final String GET_ALL_ACTION_TYPE_BY_ROLE_ID = "select a.action_type from role_action ra inner join action a on ra.id_action = a.id_action where id_role = ?";
     private final String GET_USER_BY_EMAIL_AND_PASSWORD = "select * from user u inner join role r on u.id_role = r.id_role where username = ? and password = ?";
     @Override
@@ -37,6 +37,7 @@ public class UserDaoImpl implements UserDao  {
             ps.setString(4, user.getPassword());
             ps.setInt(5, UserConstants.USER_ROLE_UNAUTH);
             ps.setInt(6, UserConstants.USER_STATUS_INACTIVE);
+            ps.setString(7, user.getImage());
             ps.execute();
             result = true;
         } catch (Exception e) {
@@ -66,6 +67,7 @@ public class UserDaoImpl implements UserDao  {
             rs = ps.executeQuery();
             if (rs.next()){
                 user = new User();
+                user.setId(rs.getInt("id_user"));
                 user.setEmail(username);
                 user.setPassword(password);
                 Role role = new Role();
@@ -74,6 +76,7 @@ public class UserDaoImpl implements UserDao  {
                 user.setRole(role);
                 user.setToken(rs.getString("token"));
                 user.setStatus(rs.getInt("status"));
+                user.setImage(rs.getString("image"));
             }
         } catch (Exception e) {
             e.printStackTrace();

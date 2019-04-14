@@ -26,8 +26,11 @@ public class HomeServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String[] pages = {"header.jsp", "main.jsp", "footer.jsp"};
         request.setAttribute("pages", pages);
-        List<Blog> blogs = blogService.getAllBlogsAndUser();
-        request.setAttribute("blogs", blogs);
+        List<Blog> blogList = blogService.getAllBlogsAndCommentsCountWithLimit(null, null);
+        int count = blogService.getBlogCount();
+        count = (int) Math.ceil(count/10);
+        request.setAttribute("count", count);
+        request.setAttribute("blogList", blogList);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 }

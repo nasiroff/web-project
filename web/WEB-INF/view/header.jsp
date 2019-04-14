@@ -38,6 +38,56 @@
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/rs-plugin/css/settings.css" media="screen" />
 
+    <script
+            src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+
+
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            getPopularTopic();
+            $('#idTopicTitle').blur(function () {
+                showSmilarTopic();
+            });
+        });
+
+        function getPopularTopic() {
+            $.ajax({
+                url: '/ts?action=getPopularTopic',
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#idPopularTopic').html(data);
+                }
+            });
+        }
+
+        function showSmilarTopic() {
+            var topicValue = $('#idTopicTitle').val();
+            if (topicValue == ""){
+
+            } else {
+                $.ajax({
+                    url: '/ts?action=smilarTopic',
+                    type: 'GET',
+                    data: $('form').serialize(),
+                    dataType: 'html',
+                    beforeSend: function () {
+                        $('#idSmilarTopic').html('<center><img src="../../resources/images/load.gif" height="100" width="100"></center>');
+                    },
+                    success: function (data) {
+                        $('#idSmilarTopic').html(data)
+                    }
+
+                })
+            }
+        }
+
+
+    </script>
+
 </head>
 <body>
 
@@ -75,19 +125,17 @@
                                 <%--<form action="/ns?action=login" class="form">--%>
                                     <%--<input type="submit" class="btn btn-primary" value="Create new topic">--%>
                                 <%--</form>--%>
-                                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/ns?action=createNewTopic">Create new topic</a>
+                                    <a class="btn btn-primary" style="margin-right: 100px" href="${pageContext.request.contextPath}/ns?action=createNewTopic">Create new topic</a>
+                            </div>
+                            <div class="avatar pull-left dropdown">
+                                <a data-toggle="dropdown" href="#"><img src="${pageContext.request.contextPath}/resources/images/${sessionScope.user.image}" width="32"  height="32" alt="" /></a> <b class="caret"></b>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
+                                </ul>
                             </div>
                         </c:otherwise>
                     </c:choose>
-                    <c:if test="${sessionScope.user ne null}">
-                        <div class="avatar pull-left dropdown">
-                            <a data-toggle="dropdown" href="#"><img src="${pageContext.request.contextPath}/resources/images/avatar.jpg" alt="" /></a> <b class="caret"></b>
-                            <ul class="dropdown-menu" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Log Out</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-4" href="04_new_account.html">Create account</a></li>
-                            </ul>
-                        </div>
-                    </c:if>
                     <div class="clearfix"></div>
                 </div>
             </div>

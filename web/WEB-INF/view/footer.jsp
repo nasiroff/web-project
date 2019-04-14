@@ -11,13 +11,7 @@
 </div>
 
 <!-- get jQuery from the google apis -->
-<script
-        src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
 
-
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 
 <!-- Mirrored from forum.azyrusthemes.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Oct 2018 05:38:53 GMT -->

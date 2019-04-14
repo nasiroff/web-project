@@ -9,9 +9,12 @@ public class User {
     private Role role;
     private String password;
     private int status;
+    private String image;
 
+    public User() {
+    }
 
-    public User(int id, String username, String email, String token, Information information, Role role, String password, int status) {
+    public User(int id, String username, String email, String token, Information information, Role role, String password, int status, String image) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -20,6 +23,7 @@ public class User {
         this.role = role;
         this.password = password;
         this.status = status;
+        this.image = image;
     }
 
 
@@ -87,7 +91,12 @@ public class User {
         this.status = status;
     }
 
-    public User() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
@@ -99,7 +108,9 @@ public class User {
                 ", token='" + token + '\'' +
                 ", information=" + information +
                 ", role=" + role +
-                ", password=" + password +
+                ", password='" + password + '\'' +
+                ", status=" + status +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

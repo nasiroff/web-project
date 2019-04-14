@@ -1,23 +1,22 @@
 package com.webApp.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Comment {
     private int id;
     private String message;
-    private LocalDate addingDate;
+    private LocalDateTime addingDate;
     private User user;
-    private Blog blog;
 
     public Comment() {
     }
 
-    public Comment(int id, String message, LocalDate addingDate, User user, Blog blog) {
+    public Comment(int id, String message, LocalDateTime addingDate, User user) {
         this.id = id;
         this.message = message;
         this.addingDate = addingDate;
         this.user = user;
-        this.blog = blog;
     }
 
     public int getId() {
@@ -36,11 +35,11 @@ public class Comment {
         this.message = message;
     }
 
-    public LocalDate getAddingDate() {
+    public LocalDateTime getAddingDate() {
         return addingDate;
     }
 
-    public void setAddingDate(LocalDate addingDate) {
+    public void setAddingDate(LocalDateTime addingDate) {
         this.addingDate = addingDate;
     }
 
@@ -52,14 +51,6 @@ public class Comment {
         this.user = user;
     }
 
-    public Blog getBlog() {
-        return blog;
-    }
-
-    public void setBlog(Blog blog) {
-        this.blog = blog;
-    }
-
     @Override
     public String toString() {
         return "Comment{" +
@@ -67,7 +58,6 @@ public class Comment {
                 ", message='" + message + '\'' +
                 ", addingDate=" + addingDate +
                 ", user=" + user +
-                ", blog=" + blog +
                 '}';
     }
 }

@@ -1,0 +1,26 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${sessionScope.user ne null}">
+    <div class="sidebarblock">
+        <h3 class="bg-primary">My Active Threads</h3>
+        <div class="divline"></div>
+        <div class="blocktxt">
+            <a href="#">This Dock Turns Your iPhone Into a Bedside Lamp</a>
+        </div>
+        <div class="divline"></div>
+        <div class="blocktxt">
+            <a href="#">Who Wins in the Battle for Power on the Internet?</a>
+        </div>
+        <div class="divline"></div>
+        <div class="blocktxt">
+            <a href="#">Sony QX10: A Funky, Overpriced Lens Camera for Your Smartphone</a>
+        </div>
+        <div class="divline"></div>
+        <div class="blocktxt">
+            <a href="#">FedEx Simplifies Shipping for Small Businesses</a>
+        </div>
+        <div class="divline"></div>
+        <div class="blocktxt">
+            <a href="#">Loud and Brave: Saudi Women Set to Protest Driving Ban</a>
+        </div>
+    </div>
+</c:if>

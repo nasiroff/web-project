@@ -33,12 +33,13 @@ public class CalculateShareTimeToNow {
             return hours+" hour"+((hours>1) ? "s": "")+" ago";
         }else if (days >= 1 && days < 7){
             return days+" day"+((days>1) ? "s": "")+" ago";
-        }else if (weeks >= 1 && weeks < 5){
+        }else if (weeks >= 1){
             if (months >= 1 && months < 12){
                 return months+" month"+((months>1) ? "s": "")+" ago";
-            } else if (months<12) {
+            } else if (months>=12) {
                 return shareTime.toString();
             }
+            return weeks+" weeks ago";
         }
             return seconds+" secons ago";
     }
